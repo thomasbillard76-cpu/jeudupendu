@@ -1,0 +1,64 @@
+<!-- templates/game.html -->
+{% extends "base.html" %}
+{% block content %}
+  <section class="game-top card">
+    <div class="player">
+      <strong>Joueur :</strong> {{ player }}
+    </div>
+    <div class="lives">
+      <strong>Vies :</strong> {{ lives }}
+    </div>
+  </section>
+
+  <section class="board card">
+    <pre class="hangman">
+{{ [
+"  +---+\n  |   |\n      |\n      |\n      |\n      |\n=========",
+"  +---+\n  |   |\n  O   |\n      |\n      |\n      |\n=========",
+"  +---+\n  |   |\n  O   |\n  |   |\n      |\n      |\n=========",
+"  +---+\n  |   |\n  O   |\n /|   |\n      |\n      |\n=========",
+"  +---+\n  |   |\n  O   |\n /|\\  |\n      |\n      |\n=========",
+"  +---+\n  |   |\n  O   |\n /|\\  |\n /    |\n      |\n========="
+][wrong] }}
+    </pre>
+
+    <div class="word-display">
+      {% for ch in revealed %}
+        <span class="letter">{{ ch }}</span>
+      {% endfor %}
+    </div>
+
+    <div class="alphabet">
+      {% for letter in alphabet %}
+        <form method="post" action="{{ url_for('guess') }}" class="letter-form">
+          <input type="hidden" name="letter" value="{{ letter }}">
+          {% set disabled = alphabet_norm[letter.lower()] in guessed %}
+          <button class="letter-btn" {{ 'disabled' if disabled else '' }}>{{ letter }}</button>
+        </form>
+      {% endfor %}
+    </div>
+
+    <div class="guessed">
+      <strong>Déjà essayé :</strong>
+      {% if guessed %}
+        {{ guessed | join(", ") }}
+      {% else %}
+        (aucune)
+      {% endif %}
+    </div>
+  </section>
+
+  {% if status != 'playing' %}
+    <section class="result card">
+      {% if status == 'won' %}
+        <h2>Bravo ! Tu as gagné 🎉</h2>
+      {% else %}
+        <h2>Partie perdue 😞</h2>
+      {% endif %}
+      <p>Mot : <strong>{{ session.get('word') }}</strong></p>
+      <form method="post" action="{{ url_for('restart') }}">
+        <button class="btn">Rejouer</button>
+      </form>
+    </section>
+  {% endif %}
+{% endblock %}

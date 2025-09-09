@@ -1,0 +1,13 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+{% block content %}
+  <section class="card">
+    <h2>Bienvenue !</h2>
+    <form action="{{ url_for('start') }}" method="post" class="start-form">
+      <label for="player">Ton nom :</label>
+      <input id="player" name="player" placeholder="Entrez votre nom" autocomplete="off" />
+      <button type="submit" class="btn">Démarrer</button>
+    </form>
+    <p class="small">Le jeu utilisera des mots depuis <code>dictionnaire.txt</code>.</p>
+  </section>
+{% endblock %}

@@ -1,0 +1,112 @@
+/* static/styles.css */
+:root{
+  --beige: #b1823c;
+  --marron: #6b3e26;
+  --bleu: #4f83cc;
+}
+
+body {
+  background: var(--beige);
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  display:flex;
+  justify-content:center;
+}
+
+.site {
+  width: 900px;
+}
+
+header { text-align:center; margin-bottom:12px; }
+h1 { color: var(--marron); margin: 6px 0; }
+
+.card {
+  background: #fff;
+  border: 2px solid var(--marron);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.06);
+}
+
+.start-form {
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+input[name="player"] {
+  padding:8px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  flex:1;
+}
+
+.btn {
+  background: var(--bleu);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 3px 0 rgba(0,0,0,0.12);
+}
+
+.btn:hover { transform: translateY(-1px); }
+
+.board { display:block; text-align:center; }
+
+.hangman {
+  font-family: monospace;
+  background: #fff7eb;
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:8px;
+  border: 1px dashed var(--marron);
+  margin-bottom:10px;
+}
+
+.word-display { margin: 12px 0; }
+.letter {
+  display:inline-block;
+  min-width:22px;
+  padding:10px 6px;
+  margin: 0 6px;
+  font-size:22px;
+  border-bottom: 3px solid var(--marron);
+  color: var(--marron);
+  font-weight:700;
+  text-align:center;
+}
+
+.alphabet {
+  margin-top:12px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  justify-content:center;
+}
+
+.letter-form { display:inline-block; }
+.letter-btn {
+  border: 2px solid var(--marron);
+  background: white;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight:700;
+  min-width:38px;
+}
+
+.letter-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f0f0f0;
+}
+
+.guessed { margin-top:10px; color: #555; font-size:14px; }
+
+.result h2 { color: var(--marron); }

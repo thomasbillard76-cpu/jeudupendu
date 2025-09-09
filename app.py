@@ -28,7 +28,7 @@ def choose_word():
 
 @app.route("/")
 def index():
-    return "Hello sombre pute fonctionne bordel de merde!"
+    return "Hello fonctionne!"
 
 @app.route("/start", methods=["POST"])
 def start():
